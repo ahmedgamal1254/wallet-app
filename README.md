@@ -96,7 +96,7 @@ php artisan db:seed</code></pre>
   <li>📥 <b>Top-up Requests</b> (Users request → Admin approve/reject)</li>
   <li>📤 <b>Withdrawal Requests</b> (Admin request → Another admin approve/reject)</li>
   <li>📢 <b>Notifications</b> (Dashboard + Email)</li>
-  <li>🛡 <b>Role & Permissions</b> for Admins</li>
+  <li>🛡 <b>Permissions</b> for Admins</li>
   <li>📊 <b>Reports & Logs</b></li>
 </ul>
 
