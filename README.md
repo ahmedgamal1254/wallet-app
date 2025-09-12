@@ -9,12 +9,12 @@
 <table>
   <tr>
     <td><img src="public/screenshots/dashboard.png" width="400"/></td>
-    <td><img src="public/screenshots/notifications.png" width="400"/></td>
+    <td><img src="public/screenshots/topup.png" width="400"/></td>
     <td><img src="public/screenshots/referral-code.png" width="400"/></td>
   </tr>
   <tr>
     <td align="center">Dashboard</td>
-    <td align="center">Notifications</td>
+    <td align="center">Top-up Requests</td>
     <td align="center">Referral Codes</td>
   </tr>
 </table>
@@ -22,13 +22,13 @@
 <table>
   <tr>
     <td><img src="public/screenshots/create-reeferral-code.png" width="400"/></td>
-    <td><img src="public/screenshots/topup.png" width="400"/></td>
     <td><img src="public/screenshots/withdraw.png" width="400"/></td>
+    <td><img src="public/screenshots/notifications.png" width="400"/></td>
   </tr>
   <tr>
     <td align="center">Create Referral Code</td>
-    <td align="center">Top-up Requests</td>
     <td align="center">Withdraw Requests</td>
+    <td align="center">Notifications</td>
   </tr>
 </table>
 
