@@ -29,10 +29,10 @@ class WalletService
                 throw new \Exception('Insufficient balance');
             }
 
-            // Hold the amount
+            // تعليق الاموال لحين قبولها من  الادمن
             $wallet->hold($amount, "Withdrawal request pending");
 
-            // Create the request
+            // عمل طلب سحب
             $request = $requester->withdrawalRequests()->create([
                 'amount' => $amount
             ]);

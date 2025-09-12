@@ -86,6 +86,37 @@
             <p class="text-2xl font-bold text-gray-900">{{ $stats['pending_topups'] }}</p>
         </div>
     </div>
+
+    <div class="bg-white p-4 rounded-lg shadow flex items-center">
+        <div class="p-3 rounded-full bg-red-100 text-red-600 mr-4">
+            <i class="fa-solid fa-money-bill-transfer text-2xl"></i>
+        </div>
+        <div>
+            <h3 class="text-lg font-semibold text-gray-700">All Withdrawals</h3>
+            <p class="text-2xl font-bold text-gray-900">{{ $stats['withdrawals'] }}</p>
+        </div>
+    </div>
+
+    <!-- Pending Top-ups -->
+    <div class="bg-white p-4 rounded-lg shadow flex items-center">
+        <div class="p-3 rounded-full bg-green-100 text-green-600 mr-4">
+            <i class="fa-solid fa-wallet text-2xl"></i>
+        </div>
+        <div>
+            <h3 class="text-lg font-semibold text-gray-700">All Top-ups</h3>
+            <p class="text-2xl font-bold text-gray-900">{{ $stats['topups'] }}</p>
+        </div>
+    </div>
+
+    <div class="bg-white p-4 rounded-lg shadow flex items-center">
+        <div class="p-3 rounded-full bg-blue-100 text-blue-600 mr-4">
+            <i class="fa-solid fa-exchange-alt text-2xl"></i>
+        </div>
+        <div>
+            <h3 class="text-lg font-semibold text-gray-700">Transaction Today</h3>
+            <p class="text-2xl font-bold text-gray-900">{{ $stats['total_transactions_today'] }}</p>
+        </div>
+    </div>
 </div>
 
 

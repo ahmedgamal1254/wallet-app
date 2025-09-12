@@ -64,7 +64,6 @@ class Admin extends Authenticatable
         return $this->morphMany(ReferralCode::class, 'generator');
     }
 
-    // Helper methods
     public function hasPermission(string $permission): bool
     {
         return $this->permissions()->where('name', $permission)->exists();

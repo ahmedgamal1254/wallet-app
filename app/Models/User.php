@@ -54,10 +54,6 @@ class User extends Authenticatable
     {
         return $this->morphMany(ReferralCode::class, 'generator');
     }
-    public function generatedReferralCodes()
-    {
-        return $this->morphMany(ReferralCode::class, 'generator');
-    }
 
     public function referralUses()
     {

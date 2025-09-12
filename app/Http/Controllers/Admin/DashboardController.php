@@ -22,6 +22,8 @@ class DashboardController extends Controller
             'total_admins' => Admin::count(),
             'pending_withdrawals' => WithdrawalRequest::where('status', 'pending')->count(),
             'pending_topups' => TopupRequest::where('status', 'pending')->count(),
+            'withdrawals' => TopupRequest::count(),
+            'topups' => TopupRequest::count(),
             'total_transactions_today' => Transaction::whereDate('created_at', today())->count(),
         ];
 
@@ -35,10 +37,7 @@ class DashboardController extends Controller
             ->take(5)
             ->get();
 
-        // Get notifications for the authenticated admin
-        $notifications = $admin->notifications()->latest()->take(10)->get();
-
-        return view('admin.dashboard', compact('stats', 'recentWithdrawals', 'recentTopups', 'notifications'));
+        return view('admin.dashboard', compact('stats', 'recentWithdrawals', 'recentTopups'));
     }
 
     public function markNotificationAsRead(Request $request, $id)

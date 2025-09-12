@@ -8,13 +8,17 @@ use App\Models\Permission;
 class PermissionService
 {
     const PERMISSIONS = [
+        "can_create_withdrawals" => "Can Create withdrawal",
+        "can_view_withdrawals" => "Can View withdrawal",
         'can_accept_withdrawals' => 'Can accept withdrawal requests',
         'can_reject_withdrawals' => 'Can reject withdrawal requests',
+        'can_view_topups' => 'Can view top-up requests',
         'can_accept_topups' => 'Can accept top-up requests',
         'can_reject_topups' => 'Can reject top-up requests',
         'can_manage_admins' => 'Can manage admin accounts',
         'can_view_all_transactions' => 'Can view all transactions',
         'can_generate_referral_codes' => 'Can generate referral codes',
+        'can_view_referral_codes' => 'Can view referral codes',
     ];
 
     public function seedPermissions(): void
