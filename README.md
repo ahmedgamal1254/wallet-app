@@ -21,7 +21,7 @@
 
 <table>
   <tr>
-    <td><img src="public/screenshots/create-reeferal-code.png" width="400"/></td>
+    <td><img src="public/screenshots/create-reeferral-code.png" width="400"/></td>
     <td><img src="public/screenshots/topup.png" width="400"/></td>
     <td><img src="public/screenshots/withdraw.png" width="400"/></td>
   </tr>
