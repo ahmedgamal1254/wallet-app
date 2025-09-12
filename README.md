@@ -56,8 +56,7 @@ cd your-repo</code></pre>
   </li>
 
   <li><b>Install dependencies</b>
-    <pre><code>composer install
-npm install && npm run build</code></pre>
+    <pre><code>composer install</code></pre>
   </li>
 
   <li><b>Environment setup</b>
