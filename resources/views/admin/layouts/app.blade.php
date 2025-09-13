@@ -1,48 +1,10 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.png') }}">
     <title>{{ config('app.name', 'Admin Panel') }} - @yield('title')</title>
     <!-- Font Awesome CDN -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
@@ -190,50 +152,48 @@
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            // Toggle Dropdown
-            const btn = document.getElementById("notification-btn");
-            const dropdown = document.getElementById("notification-dropdown");
+        // Toggle Dropdown
+        const btn = document.getElementById("notification-btn");
+        const dropdown = document.getElementById("notification-dropdown");
 
-            btn.addEventListener("click", () => {
-                dropdown.classList.toggle("hidden");
-            });
+        btn.addEventListener("click", () => {
+            dropdown.classList.toggle("hidden");
+        });
 
-            // AJAX Mark as Read
-            document.querySelectorAll(".mark-read").forEach(button => {
-                button.addEventListener("click", async (e) => {
-                    e.preventDefault();
-                    const id = button.getAttribute("data-id");
+        // AJAX Mark as Read
+        document.querySelectorAll(".mark-read").forEach(button => {
+            button.addEventListener("click", async (e) => {
+                e.preventDefault();
+                const id = button.getAttribute("data-id");
 
-                    const response = await fetch(`/admin/notifications/${id}/read`, {
-                        method: "POST",
-                        headers: {
-                            "X-CSRF-TOKEN": "{{ csrf_token() }}",
-                            "Accept": "application/json"
-                        }
-                    });
-
-                    const result = await response.json();
-
-                    if (result.success) {
-                        const li = document.getElementById(`notification-${id}`);
-                        li.classList.remove("text-black");
-                        li.classList.add("text-gray-500");
-                        button.remove();
-
-                        // نقص العدّاد
-                        const countEl = document.getElementById("notification-count");
-                        if (countEl) {
-                            let count = parseInt(countEl.innerText);
-                            count = count - 1;
-                            if (count > 0) {
-                                countEl.innerText = count;
-                            } else {
-                                countEl.remove();
-                            }
-                        }
+                const response = await fetch(`/admin/notifications/${id}/read`, {
+                    method: "POST",
+                    headers: {
+                        "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                        "Accept": "application/json"
                     }
                 });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    const li = document.getElementById(`notification-${id}`);
+                    li.classList.remove("text-black");
+                    li.classList.add("text-gray-500");
+                    button.remove();
+
+                    // نقص العدّاد
+                    const countEl = document.getElementById("notification-count");
+                    if (countEl) {
+                        let count = parseInt(countEl.innerText);
+                        count = count - 1;
+                        if (count > 0) {
+                            countEl.innerText = count;
+                        } else {
+                            countEl.remove();
+                        }
+                    }
+                }
             });
         });
     </script>

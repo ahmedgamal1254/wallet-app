@@ -49,6 +49,6 @@ class DashboardController extends Controller
             $notification->markAsRead();
         }
 
-        return redirect()->back();
+        return response()->json(['success' => true]);
     }
 }
