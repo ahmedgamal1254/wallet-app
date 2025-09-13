@@ -64,6 +64,20 @@ cd your-repo</code></pre>
 php artisan key:generate</code></pre>
   </li>
 
+<li><b>Email Setup (Gmail SMTP)</b>
+  <pre><code>
+###open .env file and put it
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=your_email@gmail.com
+MAIL_PASSWORD=your_app_password
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=your_email@gmail.com
+MAIL_FROM_NAME="Your App Name"
+  </code></pre>
+</li>
+
   <li><b>Database migration + seed</b>
     <pre><code>php artisan migrate
 php artisan db:seed</code></pre>
